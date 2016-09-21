@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>js栈的实现</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Queue() {
+      this.dataStore = [];
+      this.enqueue = enqueue;
+      this.dequeue = dequeue;
+      this.front = front;
+      this.back = back;
+      this.toString = toString;
+      this.isEmpty= isEmpty;
+      this.count= count;
+    }
+    function enqueue(element) {
+        this.dataStore.push(element);
+    }
+    function dequeue() {
+        return this.dataStore.shift();
+    }
+    function front() {
+        return this.dataStore[0];
+    }
+    function back() {
+        return this.dataStore[this.dataStore.length - 1];
+    }
+    function count(){
+        return this.dataStore.length;
+    }
+    function isEmpty() {
+        if (this.dataStore.length == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function toString() {
+        var retStr = "";
+        for (var i = 0; i < this.dataStore.length; ++i ) {
+            retStr += this.dataStore[i] + "  ";
+        }
+        return retStr;
+    }
+    var queue = new Queue();
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    document.write("入队1,2,3后队列转为字符串为:" + queue.toString() + "<br>");
+    document.write("入队1,2,3后队列是否为空：" + queue.isEmpty() + "<br>");
+    document.write("队首元素为:" + queue.front() + "<br>");
+    document.write("队尾元素为:"+queue.back() + "<br>");
+    document.write("队列长度为:"+queue.count() + "<br>");
+    queue.dequeue();
+    document.write("出队一个元素后为:"+queue.toString() + "<br>");
+    queue.dequeue();
+    queue.dequeue();
+    document.write("队列中元素全部出队后队列是否为空:" + queue.isEmpty() + "<br>");
+  </script>
+</body>
+</html>
